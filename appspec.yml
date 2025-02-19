@@ -3,7 +3,7 @@ os: linux
 files:
   - source: /
     destination: /opt/app
-
+    overwrite: yes
 hooks:
   BeforeInstall:
     - location: scripts/stop_old_container.sh
