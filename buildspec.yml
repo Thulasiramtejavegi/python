@@ -11,9 +11,13 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - echo "Installing Python dependencies..."
-      - python3 -m pip install --upgrade pip
-      - python3 -m pip install --break-system-packages -r requirements.txt  # Fix installation issue
+    - echo "Installing system dependencies..."
+    - apt-get update && apt-get install -y gcc libpq-dev  
+    - echo "Upgrading pip..."
+    - python3 -m ensurepip --default-pip
+    - python3 -m pip install --upgrade pip
+    - echo "Installing Python dependencies..."
+    - python3 -m pip install --break-system-packages -r requirements.txt 
 
   pre_build:
     commands:
