@@ -15,7 +15,8 @@ phases:
     - apt-get update && apt-get install -y gcc libpq-dev python3-venv
     - echo "Creating virtual environment..."
     - python3 -m venv venv
-    - source venv/bin/activate
+    - echo "Activating virtual environment..."
+    - . venv/bin/activate  # Using dot (.) instead of source
     - echo "Upgrading pip..."
     - pip install --upgrade pip setuptools wheel
     - echo "Installing Python dependencies..."
