@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/app
+
+hooks:
+  BeforeInstall:
+    - location: scripts/stop_old_container.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/start_new_container.sh
+      timeout: 300
+      runas: root
