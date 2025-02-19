@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Starting Pre-Build Phase..."
+      - echo "Logging into Docker Hub..."
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+  build:
+    commands:
+      - echo "Starting Build Phase..."
+      - echo "Building Docker Image..."
+      - docker build -t $DOCKER_USERNAME/$DOCKER_REPO_NAME:latest .
+
+  post_build:
+    commands:
+      - echo "Starting Post-Build Phase..."
+      - echo "Pushing Docker Image to Docker Hub..."
+      - docker push $DOCKER_USERNAME/$DOCKER_REPO_NAME:latest
+      - echo "Build & Push Completed Successfully!"
+
+artifacts:
+  files:
+    - "**/*"
