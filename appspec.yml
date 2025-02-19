@@ -6,6 +6,10 @@ files:
     overwrite: yes
 hooks:
   BeforeInstall:
+  BeforeInstall:
+    - location: scripts/cleanup_old_deployment.sh
+      timeout: 300
+      runas: root
     - location: scripts/stop_old_container.sh
       timeout: 300
       runas: root
