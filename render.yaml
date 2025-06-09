@@ -1,0 +1,12 @@
+# Exported from Render on 2025-06-09T11:39:42Z
+services:
+- type: web
+  name: python
+  runtime: docker
+  repo: https://github.com/Thulasiramtejavegi/python
+  plan: free
+  region: oregon
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+  autoDeployTrigger: commit
+version: "1"
